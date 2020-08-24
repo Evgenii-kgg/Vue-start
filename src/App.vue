@@ -1,24 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img src="./assets/logo.png">
+    <ToDoList :items="items"/>
+    <Editor/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ToDoList from './components/ToDoList'
+import Editor from './components/Editor'
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    HelloWorld
+    ToDoList,
+    Editor
+  },
+  data () {
+    return {
+      items: [
+        { id: 0, name: 'Angular', status: true },
+        { id: 1, name: 'React', status: true },
+        { id: 2, name: 'Vue', status: true },
+        { id: 3, name: 'Node', status: false }
+      ]
+    }
+  },
+  methods: {
+    addTodo (name, status) {
+      const isStatus = (status === 'true')
+      this.items.push({ id: this.items.length, name: name, status: isStatus })
+    },
+    deleteItem (id) {
+      this.items = this.items.filter(el => {
+        return el.id !== id
+      })
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
