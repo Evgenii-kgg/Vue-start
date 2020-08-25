@@ -1,19 +1,19 @@
 <template>
   <transition name="fade">
     <li>
-      <div>{{ item.name }}</div>
+      <div>{{ list.name }}</div>
       <div>
         <input
           type="checkbox"
-          value="item.name"
-          id="item.name"
-          v-model="item.status"
-          :checked="item.status"
+          value="list.name"
+          id="list.name"
+          v-model="list.status"
+          :checked="list.status"
         />
-        <label for="item.name">Learned</label>
+        <label for="list.name">Learned</label>
       </div>
       <div>
-        <button @click="deleteItem(item.id)">
+        <button @click="deleteItem(list.id)">
           Delete
         </button>
       </div>
@@ -23,9 +23,9 @@
 
 <script>
 export default {
-  name: 'TodoItem',
+  name: 'FilterItem',
   props: {
-    item: {
+    list: {
       type: Object,
       required: true,
       id: {

@@ -3,17 +3,20 @@
     <img src="./assets/logo.png">
     <ToDoList :items="items"/>
     <Editor/>
+    <FilterList :items="items"/>
   </div>
 </template>
 
 <script>
 import ToDoList from './components/ToDoList'
 import Editor from './components/Editor'
+import FilterList from './components/FilterList'
 export default {
   name: 'app',
   components: {
     ToDoList,
-    Editor
+    Editor,
+    FilterList
   },
   data () {
     return {
@@ -29,12 +32,12 @@ export default {
     addTodo (name, status) {
       const isStatus = (status === 'true')
       this.items.push({ id: this.items.length, name: name, status: isStatus })
-    },
-    deleteItem (id) {
-      this.items = this.items.filter(el => {
-        return el.id !== id
-      })
     }
+    // deleteItem (id) {
+    //   this.items = this.items.filter(el => {
+    //     return el.id !== id
+    //   })
+    // },
   }
 }
 </script>

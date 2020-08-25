@@ -29,6 +29,13 @@ export default {
         el.style.fontWeight = 'bold'
       }
     }
+  },
+  methods: {
+    deleteItem (id) {
+      this.items = this.items.filter(el => {
+        return el.id !== id
+      })
+    }
   }
 }
 </script>
@@ -45,6 +52,7 @@ li {
   line-height: 25px;
   border: 1px solid;
   border-bottom: 0;
+  list-style-type: none;
   text-align: left;
   padding-left: 15px;
 }
