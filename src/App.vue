@@ -1,54 +1,33 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <ToDoList :items="items"/>
-    <Editor/>
-    <FilterList :items="items"/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/all">All</router-link>
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-import ToDoList from './components/ToDoList'
-import Editor from './components/Editor'
-import FilterList from './components/FilterList'
-export default {
-  name: 'app',
-  components: {
-    ToDoList,
-    Editor,
-    FilterList
-  },
-  data () {
-    return {
-      items: [
-        { id: 0, name: 'Angular', status: true },
-        { id: 1, name: 'React', status: true },
-        { id: 2, name: 'Vue', status: true },
-        { id: 3, name: 'Node', status: false }
-      ]
-    }
-  },
-  methods: {
-    addTodo (name, status) {
-      const isStatus = (status === 'true')
-      this.items.push({ id: this.items.length, name: name, status: isStatus })
-    }
-    // deleteItem (id) {
-    //   this.items = this.items.filter(el => {
-    //     return el.id !== id
-    //   })
-    // },
-  }
-}
-</script>
-
-<style>
+<style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
