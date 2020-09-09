@@ -86,13 +86,6 @@ export default {
     //     })
     //   } else alert('Invalid name')
     // }
-    // sendTodo (name) {
-    //   if (name.length > 0) {
-    //     this.$parent.addTodo(name, status)
-    //     this.name = ''
-    //     this.status = false
-    //   } else alert('Invalid name')
-    // }
   }
 }
 </script>
